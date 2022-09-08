@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="CommonRoadSolution">
+  <xs:complexType>
+  	<xs:sequence>
+      <xs:element name="pmInputVector" maxOccurs="unbounded" minOccurs="0">
+      	<xs:complexType>
+      	  <xs:sequence>
+      	  	<xs:element name="pmInput" maxOccurs="unbounded" minOccurs="1">
+      	  	  <xs:complexType>
+      	  	  	<xs:all>
+      	  	  	  <xs:element name="xAcceleration" type="xs:float"/>
+      	  	  	  <xs:element name="yAcceleration" type="xs:float"/>
+      	  	  	  <xs:element name="time" type="xs:int"/>
+  	  	  		  </xs:all>
+      	  	  </xs:complexType>
+  	  		  </xs:element>
+  		    </xs:sequence>
+            <xs:attribute name="planningProblem" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+  	  <xs:element name="inputVector" maxOccurs="unbounded" minOccurs="0">
+      	<xs:complexType>
+      	  <xs:sequence>
+      	  	<xs:element name="input" maxOccurs="unbounded" minOccurs="1">
+      	  	  <xs:complexType>
+      	  	  	<xs:all>
+      	  	  	  <xs:element name="acceleration" type="xs:float"/>
+      	  	  	  <xs:element name="steeringAngleSpeed" type="xs:float"/>
+      	  	  	  <xs:element name="time" type="xs:int"/>
+  	  	  		  </xs:all>
+      	  	  </xs:complexType>
+  	  		  </xs:element>
+  		    </xs:sequence>
+            <xs:attribute name="planningProblem" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pmTrajectory" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+              <xs:sequence>
+                  <xs:element name="pmState" maxOccurs="unbounded" minOccurs="1">
+                      <xs:complexType>
+                          <xs:all>
+                              <xs:element name="x" type="xs:float"/>
+                              <xs:element name="y" type="xs:float"/>
+                              <xs:element name="xVelocity" type="xs:float"/>
+                              <xs:element name="yVelocity" type="xs:float"/>
+                              <xs:element name="time" type="xs:int" />
+                          </xs:all>
+                      </xs:complexType>
+                  </xs:element>
+              </xs:sequence>
+              <xs:attribute name="planningProblem" type="xs:string" use="required"/>
+          </xs:complexType>
+      </xs:element>
+      <xs:element name="ksTrajectory" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+              <xs:sequence>
+                  <xs:element name="ksState" maxOccurs="unbounded" minOccurs="1">
+                      <xs:complexType>
+                          <xs:all>
+                              <xs:element name="x" type="xs:float"/>
+                              <xs:element name="y" type="xs:float"/>
+                              <xs:element name="orientation" type="xs:float"/>
+                              <xs:element name="velocity" type="xs:float"/>
+                              <xs:element name="steeringAngle" type="xs:float" />
+                              <xs:element name="time" type="xs:int" />
+                          </xs:all>
+                      </xs:complexType>
+                  </xs:element>
+              </xs:sequence>
+              <xs:attribute name="planningProblem" type="xs:string" use="required"/>
+          </xs:complexType>
+      </xs:element>
+      <xs:element name="stTrajectory" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+              <xs:sequence>
+                  <xs:element name="stState" maxOccurs="unbounded" minOccurs="1">
+                      <xs:complexType>
+                          <xs:all>
+                              <xs:element name="x" type="xs:float"/>
+                              <xs:element name="y" type="xs:float"/>
+                              <xs:element name="orientation" type="xs:float"/>
+                              <xs:element name="yawRate" type="xs:float" />
+                              <xs:element name="velocity" type="xs:float"/>
+                              <xs:element name="steeringAngle" type="xs:float" />
+                              <xs:element name="slipAngle" type="xs:float" />
+                              <xs:element name="time" type="xs:int" />
+                          </xs:all>
+                      </xs:complexType>
+                  </xs:element>
+              </xs:sequence>
+              <xs:attribute name="planningProblem" type="xs:string" use="required"/>
+          </xs:complexType>
+      </xs:element>
+      <xs:element name="mbTrajectory" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+              <xs:sequence>
+                  <xs:element name="mbState" maxOccurs="unbounded" minOccurs="1">
+                      <xs:complexType>
+                          <xs:all>
+                              <xs:element name="x" type="xs:float"/>
+                              <xs:element name="y" type="xs:float"/>
+                              <xs:element name="steeringAngle" type="xs:float"/>
+                              <xs:element name="velocity" type="xs:float" />
+                              <xs:element name="orientation" type="xs:float" />
+                              <xs:element name="yawRate" type="xs:float" />
+
+                              <xs:element name="rollAngle" type="xs:float" />
+                              <xs:element name="rollRate" type="xs:float" />
+                              <xs:element name="pitchAngle" type="xs:float" />
+                              <xs:element name="pitchRate" type="xs:float" />
+                              <xs:element name="yVelocity" type="xs:float" />
+                              <xs:element name="zPosition" type="xs:float" />
+                              <xs:element name="zVelocity" type="xs:float" />
+
+                              <xs:element name="rollAngleFront" type="xs:float" />
+                              <xs:element name="rollRateFront" type="xs:float" />
+                              <xs:element name="yVelocityFront" type="xs:float" />
+                              <xs:element name="zPositionFront" type="xs:float" />
+                              <xs:element name="zVelocityFront" type="xs:float" />
+
+                              <xs:element name="rollAngleRear" type="xs:float" />
+                              <xs:element name="rollRateRear" type="xs:float" />
+                              <xs:element name="yVelocityRear" type="xs:float" />
+                              <xs:element name="zPositionRear" type="xs:float" />
+                              <xs:element name="zVelocityRear" type="xs:float" />
+
+                              <xs:element name="leftFrontWheelAngularSpeed" type="xs:float" />
+                              <xs:element name="rightFrontWheelAngularSpeed" type="xs:float" />
+                              <xs:element name="leftRearWheelAngularSpeed" type="xs:float" />
+                              <xs:element name="rightRearWheelAngularSpeed" type="xs:float" />
+
+                              <xs:element name="deltaYf" type="xs:float" />
+                              <xs:element name="deltaYr" type="xs:float" />
+
+                              <xs:element name="time" type="xs:int" />
+                          </xs:all>
+                      </xs:complexType>
+                  </xs:element>
+              </xs:sequence>
+              <xs:attribute name="planningProblem" type="xs:string" use="required"/>
+          </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="benchmark_id" type="xs:string" use="required"/>
+    <xs:attribute name="date" type="xs:dateTime"/>
+    <xs:attribute name="computation_time" type="xs:float"/>
+    <xs:attribute name="processor_name" type="xs:string"/>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

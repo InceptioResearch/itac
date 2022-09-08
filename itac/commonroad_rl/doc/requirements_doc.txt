@@ -1,0 +1,23 @@
+# copied from requirements.txt
+numpy>=1.13
+scipy>=1.5.2
+shapely>=1.6.4
+matplotlib>=2.2.2
+lxml>=4.2.2
+networkx>=2.2
+Pillow>=7.0.0
+iso3166>=1.0.1
+
+# doc related
+ipython>7.16.0
+sphinx>=2.2.1
+sphinx-autodoc-typehints>=1.11.0
+sphinx-rtd-theme
+sphinxcontrib-apidoc
+sphinxcontrib-applehelp
+sphinxcontrib-devhelp
+sphinxcontrib-htmlhelp
+sphinxcontrib-jsmath
+sphinxcontrib-napoleon
+sphinxcontrib-qthelp
+sphinxcontrib-serializinghtml

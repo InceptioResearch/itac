@@ -1,0 +1,25 @@
+argparse
+tqdm~=4.50.2
+networkx>=2.4
+ipywidgets~=7.5.1
+ipython-autotime~=0.1
+matplotlib>=3.3.2
+numpy~=1.19.2
+scipy>=1.4.1
+ipython~=7.18.1
+pyyaml~=5.3.1
+imageio~=2.9.0
+shapely>=1.6.4
+polygon3>=3.0.8
+setuptools>=42.0.1
+cvxpy>=1.0.0
+gym==0.21.0
+tensorflow===1.15.0
+aenum
+triangle
+stable_baselines
+iso3166
+optuna
+jupyterlab
+pandas
+mpi4py  # if install failed, use conda install mpi4py

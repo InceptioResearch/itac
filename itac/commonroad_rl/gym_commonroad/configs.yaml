@@ -1,0 +1,408 @@
+# Default environment configurations
+# During execution, this will be read in by `commonroad_rl/gym_commonroad/commonroad_env.py`
+env_configs:
+  # vehicle model and types
+  vehicle_params:
+    vehicle_type: 5  # 1: FORD_ESCORT; 2: BMW_320i; 3: VW_VANAGON; 4: SEDAN; 5: SEMI_TRAILER
+    vehicle_model: 6  # 0: PM, 1: ST, 2: KS, 3: MB, 4: KST, 5: SEDAN, 6: SEMI_TRAILER 
+
+  # action configuration
+  action_configs:
+    action_type: continuous # discrete
+    action_base: acceleration # acceleration; jerk (For ContinuousAction)
+    long_steps: 5
+    lat_steps: 5
+    planning_horizon: 1. # unit [s]
+    continuous_collision_checking: True # TODO: SUMO scenarios do not support continuous collision check
+
+  # Flatten observation into a vector for NN input
+  flatten_observation: True
+
+  # maximal range to merge lanelet succesrsos
+  max_lane_merge_range: 5000.
+
+  # performance
+  cache_navigators: False # use for large scenarios like Hhr
+
+  # Ego-related observation flags and settings
+  ego_configs:
+    observe_v_ego: True
+    observe_a_ego: True
+    observe_relative_heading: True
+    observe_steering_angle: False
+    observe_global_turn_rate: True
+    observe_remaining_steps: True
+    # Termination-related observation flags and settings
+    observe_is_friction_violation: True
+
+  lanelet_configs:
+    # off road check settings
+    strict_off_road_check: True
+    non_strict_check_circle_radius: 0.5
+    # lanelet observations:
+    observe_lat_offset: True
+    observe_left_marker_distance: True
+    observe_right_marker_distance: True
+    observe_left_road_edge_distance: True
+    observe_right_road_edge_distance: True
+    observe_is_off_road: True
+    observe_lane_curvature: False
+    # Future lateral offset observations:
+    observe_static_extrapolated_positions: False
+    static_extrapolation_samples: [ 1, 2, 5, 10, 25 ]
+    observe_dynamic_extrapolated_positions: False
+    dynamic_extrapolation_samples: [ 0.1, 0.25, 1, 2 ]
+    # Navigator Route Observations:
+    observe_route_reference_path: False
+    distances_route_reference_path: [-1000, 0, 5, 15, 100]
+    observe_route_multilanelet_waypoints: False
+    distances_and_ids_multilanelet_waypoints: [[-1000, 0, 1000], [0, 1]]
+    observe_distance_togoal_via_referencepath: False
+          
+
+  # Goal-related observation flags and settings
+  goal_configs:
+    # Regard goal as reached if goal position shape is reached
+    # TODO: remove after other goal observations (velocity interval and orientation interval) are implemented
+    relax_is_goal_reached: False
+    # goal observations
+    observe_distance_goal_long: True
+    observe_distance_goal_lat: True
+    observe_distance_goal_long_lane: False
+    observe_distance_goal_time: True
+    observe_distance_goal_orientation: True #False
+    observe_distance_goal_velocity: True #False
+    observe_euclidean_distance: False
+
+    # Termination-related observation flags and settings
+    observe_is_time_out: True
+    observe_is_goal_reached: True
+
+  # Surrounding-related observation flags and settings
+  surrounding_configs:
+    observe_is_collision: True
+    observe_lane_change: True
+    observe_vehicle_type: False
+    observe_vehicle_lights: False
+
+    ## Lane based surrounding observation flags and settings
+    fast_distance_calculation: True #False # Only calculates the distance between the centers of two vehicles
+
+    # Rectangle
+    observe_lane_rect_surrounding: False
+    lane_rect_sensor_range_length: 100.
+    lane_rect_sensor_range_width: 7.
+
+    # Circular
+    observe_lane_circ_surrounding: True
+    lane_circ_sensor_range_radius: 100.
+
+    # Traffic rule related:
+    observe_relative_priority: False
+
+    ## Lidar-based elliptical surrounding observation flags and settings
+    observe_lidar_circle_surrounding: False
+    lidar_circle_num_beams: 20
+    lidar_sensor_radius: 50.
+
+  traffic_sign_configs:
+    observe_stop_sign: False
+    observe_yield_sign: False
+    observe_priority_sign: False
+    observe_right_of_way_sign: False
+
+  render_configs:
+    # Render settings (only if corresponding observations are available)
+    render_road_boundaries: False # whether to render the road boundaries
+    render_ego_lanelet_center_vertices: False # whether to render the center vertices of the ego lane
+    # whether to colorize detected surrounding obstacles in
+    # (lane-based rectangle, lane-based circle, lidar-based) detection methods
+    render_surrounding_obstacles_lane_based: False
+    render_lidar_circle_surrounding_obstacles: False
+    # whether to render the sensing area/lidar beams in the three detection methods
+    render_surrounding_area: False
+    render_lidar_circle_surrounding_beams: False
+    # whether to render the future positions of the static/dynamic extrapolations
+    render_static_extrapolated_positions: False
+    render_dynamic_extrapolated_positions: False
+    # whether to render the global and local curvilinear coordinate system
+    render_global_ccosy: False
+    render_local_ccosy: False
+    render_ccosy_nav_observations: False
+    # Render settings regarding the kind of printed results
+    render_skip_timesteps: 1
+    render_combine_frames: False
+    # set plot limits to follow current ego position
+    render_follow_ego: True
+    render_range: [100., 15.]
+
+  reward_type: hybrid_reward # p: sparse_reward
+  # Reward settings
+
+  # HYBRID REWARD
+  reward_configs_hybrid:
+    # Termination related
+
+    reward_goal_reached: 2000.
+    reward_collision: -1000.
+    reward_off_road: -1000.
+    reward_time_out: -100.
+    reward_friction_violation: 0.0 # -10.
+    # reward for termininating close to goal
+    reward_long_distance_reference_path: 0.0
+
+    # Goal related
+    reward_closer_to_goal_long: 5.
+    reward_closer_to_goal_lat: 5.
+    reward_get_close_goal_time: 1. #0.
+    reward_close_goal_orientation: 1. #0.
+    reward_close_goal_velocity: 1. #0.
+
+    # Safe driving
+    reward_reverse_driving: 0.
+    reward_safe_distance_coef: -1.
+
+    # Comfort
+    reward_jerk_long: 0.05 #0.05
+    reward_jerk_lat: 0.1 #0.1
+
+    #Traffic signs and rules:
+    stop_sign_vel_zero: 0. #5.
+    reward_stop_sign_vel: 0. #-0.5 # -15.
+    reward_stop_sign_acc: 0. #1. # 5.
+
+    # Inactive
+    reward_stay_in_road_center: 0.1 #0.1
+    reward_friction: 0. # 0.06
+    reward_lateral_velocity: -50. # -50.
+
+    # Reference Path
+    reward_lat_distance_reference_path: 0. #0.3
+
+  # DENSE REWARD
+  reward_configs_dense:
+    reward_obs_distance_coefficient: 0.1
+    reward_goal_distance_coefficient: 0.2
+
+  # SPARSE REWARD
+  reward_configs_sparse:
+    reward_goal_reached: 50.
+    reward_collision: -50.
+    reward_off_road: -50.
+    reward_time_out: -10.
+    reward_friction_violation: 0.
+
+
+  termination_configs:
+    # TERMINATIONS
+    ## Observation-related (effective only if corresponding observation available)
+    terminate_on_goal_reached: True
+    terminate_on_collision: True
+    terminate_on_off_road: True
+    terminate_on_time_out: True
+    terminate_on_friction_violation: False
+
+# A user-specified file for setting the sampling methods and intervals when optimizing observation configurations.
+# Currently supported sampling methods: categorical, uniform, loguniform.
+# During execution, this setting is read in by `./run_stable_baselines.py` and
+# passed to `./utils_run/observation_configs_opt.py` for optimization.
+# Simply comment out the items which are not to be optimized, and the values from the above `env_configs` will be taken.
+
+sampling_setting_observation_configs:
+  #  observe_a_ego: !!python/tuple
+  #    - categorical
+  #    - - true
+  #      - false
+  ego_configs:
+    observe_v_ego:
+      categorical: [ True, False ]
+    observe_a_ego:
+      categorical: [ True, False ]
+    observe_relative_heading:
+      categorical: [ True, False ]
+    observe_steering_angle:
+      categorical: [ True, False ]
+    observe_global_turn_rate:
+      categorical: [ True, False ]
+    observe_remaining_steps:
+      categorical: [ True, False ]
+    observe_is_friction_violation:
+      categorical: [ True, False ]
+  lanelet_configs:
+    strict_off_road_check:
+      categorical: [ True, False ]
+    non_strict_check_circle_radius:
+      uniform: [ 0.5, 2.0 ]
+    observe_lat_offset:
+      categorical: [ True, False ]
+    observe_left_marker_distance:
+      categorical: [ True, False ]
+    observe_right_marker_distance:
+      categorical: [ True, False ]
+    observe_left_road_edge_distance:
+      categorical: [ True, False ]
+    observe_right_road_edge_distance:
+      categorical: [ True, False ]
+    observe_is_off_road:
+      categorical: [ True, False ]
+  goal_configs:
+    # goal observations
+    relax_is_goal_reached:
+      categorical: [ True, False ]
+    observe_distance_goal_long:
+      categorical: [ True, False ]
+    observe_distance_goal_lat:
+      categorical: [ True, False ]
+    observe_distance_goal_long_lane:
+      categorical: [ True, False ]
+    observe_distance_goal_time:
+      categorical: [ True, False ]
+    observe_distance_goal_orientation:
+      categorical: [ True, False ]
+    observe_distance_goal_velocity:
+      categorical: [ True, False ]
+    observe_euclidean_distance:
+      categorical: [ True, False ]
+    # Future lateral offset observations
+    observe_static_extrapolated_positions:
+      categorical: [ True, False ]
+    observe_dynamic_extrapolated_positions:
+      categorical: [ True, False ]
+    # Termination-related observation flags and settings
+    observe_is_time_out:
+      categorical: [ True, False ]
+    observe_is_goal_reached:
+      categorical: [ True, False ]
+  surrounding_configs:
+    observe_is_collision:
+      categorical: [ True, False ]
+    observe_lane_rect_surrounding:
+      categorical: [ True, False ]
+    observe_lane_circ_surrounding:
+      categorical: [ True, False ]
+    observe_lidar_circle_surrounding:
+      categorical: [ True, False ]
+    observe_lane_change:
+      categorical: [ True, False]
+
+# A user-specified file for setting the sampling methods and intervals when optimizing environment configurations.
+# Currently supported sampling methods: categorical, uniform, loguniform.
+# During execution, this setting is read in by `./run_stable_baselines.py` and
+# passed to `./utils_run/reward_configs_opt.py` for optimization.
+# Simply comment out the items which are not to be optimized, and the values from the above `env_configs` will be taken.
+
+#sampling_setting_reward_configs:
+#  reward_configs:
+#      reward_friction_violation:
+#        uniform: [-10.0, 0.0]
+#      reward_get_close_coefficient:
+#        loguniform: [0.1, 1]
+#      reward_goal_reached:
+#        uniform: [0.0, 100.0]
+#      reward_off_road:
+#        uniform: [-10.0, 0.0]
+
+
+sampling_setting_reward_configs:
+  reward_configs_hybrid:
+    reward_goal_reached:
+      uniform: [ 20.0, 200.0 ]
+    reward_collision:
+      uniform: [ -50.0, 0.0 ]
+    reward_off_road:
+      uniform: [ -50.0, 0.0 ]
+    reward_time_out:
+      uniform: [ -50.0, 0.0 ]
+    reward_friction_violation:
+      uniform: [ -20.0, 0.0 ]
+    reward_get_close_coefficient:
+      uniform: [ 0.0, 20.0 ]
+    reward_get_close_goal_time:
+      uniform: [ 0.0, 10.0 ]
+    reward_close_goal_orientation:
+      uniform: [ 0.0, 10.0 ]
+    reward_close_goal_velocity:
+      uniform: [ 0.0, 10.0 ]
+    reward_stay_in_road_center:
+      uniform: [ 0.0, 10.0 ]
+    reward_reverse_driving:
+      uniform: [ -10.0, 0.0 ]
+    reward_friction:
+      uniform: [ 0.0, 10.0 ]
+    reward_stop_sign_vel:
+      uniform: [ -20.0, 0.0 ]
+    reward_stop_sign_acc:
+      uniform: [ 0, 10. ]
+    reward_lateral_velocity:
+      uniform: [ -50.0, 0.0 ]
+    reward_jerk_long:
+      uniform: [ 0.0, 5.0 ]
+    reward_jerk_lat:
+      uniform: [ 0.0, 5.0 ]
+    reward_safe_distance_coef:
+      uniform: [ -10.0, 0.0 ]
+    safe_distance_threshold:
+      uniform: [ 5.0, 100.0 ]
+
+  reward_configs_dense:
+    reward_obs_distance_coefficient:
+      uniform: [ 0.0, 20.0 ]
+    reward_goal_distance_coefficient:
+      uniform: [ 0.0, 20.0 ]
+
+  reward_configs_sparse:
+    reward_goal_reached:
+      uniform: [ 20.0, 200.0 ]
+    reward_collision:
+      uniform: [ -50.0, 0.0 ]
+    reward_off_road:
+      uniform: [ -50.0, 0.0 ]
+    reward_time_out:
+      uniform: [ -50.0, 0.0 ]
+    reward_friction_violation:
+      uniform: [ -20.0, 0.0 ]
+
+
+sensititvity_analysis_bounds:
+  distance_goal_long: [0, 150]
+  distance_goal_long_advance: [0, 100]
+  distance_goal_lat: [0, 100]
+  distance_goal_lat_advance: [0, 100]
+  distance_goal_time: [-150, 0] #same?
+  distance_goal_orientation: [-3.14, 3.14]
+  distance_goal_velocity: [-10, 10]
+  is_goal_reached: [False, True]
+  is_time_out: [False,True]
+  v_ego: [-15, 45]
+  a_ego: [-11.5, 11.5]
+  lane_based_v_rel: [-15, 45]
+  lane_based_p_rel: [0, 100]
+  is_friction_violation: [False, True]
+  remaining_steps: [-150, 0] #same?
+  lidar_circle_dist_rate: [0, 10]
+  lidar_circle_dist: [0, 100]
+  is_collision: [False, True]
+  is_off_road: [False, True]
+  left_marker_distance: [-10, 10]
+  right_marker_distance: [-10, 10]
+  left_road_edge_distance: [-10, 10]
+  right_road_edge_distance: [-10, 10]
+  lat_offset: [-10, 10]
+  lane_curvature: [-10, 10]
+  distance_goal_long_lane: [0, 150]
+  euclidean_distance: [0, 150]
+  lane_rect_sensor_range_length: [0, 100]
+  lane_rect_sensor_range_width: [0, 7]
+  lane_circ_sensor_range_radius: [0, 100]
+  rel_prio_lidar: [-1, 1]
+  relative_heading: [-3.14, 3.14]
+  steering_angle: [-3.14, 3.14]
+  vehicle_type: [0, 6]
+  dist_lead_follow_rel: [0, 100]
+  route_reference_path_positions: [-50, 50]
+  route_reference_path_orientations: [-3.14, 3.14]
+  route_multilanelet_waypoints_positions: [-50, 50]
+  route_multilanelet_waypoints_orientations: [-3.14, 3.14]
+  distance_togoal_via_referencepath: [-10, 150]
+  extrapolation_dynamic_off: [0, 10]
+  extrapolation_static_off: [0, 10]

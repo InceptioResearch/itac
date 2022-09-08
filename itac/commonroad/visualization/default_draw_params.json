@@ -1,0 +1,451 @@
+{
+    "time_begin": 0,
+    "time_end": 200,
+    "axis_visible": true,
+    "focus_obstacle_id": false,
+    "relative_angle": 0.0,
+    "dynamic_obstacle": {
+        "draw_shape": true,
+        "draw_icon": false,
+        "draw_direction": false,
+        "draw_bounding_box": true,
+        "show_label": false,
+        "zorder": 20,
+        "draw_signals": true,
+        "vehicle_shape": {
+            "direction": {
+                "shape": {
+                    "polygon": {
+                        "opacity": 1.0,
+                        "facecolor": "#00478f",
+                        "edgecolor": "#00478f",
+                        "linewidth": 0,
+                        "zorder": 20
+                    }
+                }
+            },
+            "occupancy": {
+                "shape": {
+                    "polygon": {
+                        "opacity": 1.0,
+                        "facecolor": "#1d7eea",
+                        "edgecolor": "#00478f",
+                        "linewidth": 0.5,
+                        "zorder": 20
+                    },
+                    "rectangle": {
+                        "opacity": 1.0,
+                        "facecolor": "#1d7eea",
+                        "edgecolor": "#00478f",
+                        "linewidth": 0.5,
+                        "zorder": 20
+                    },
+                    "circle": {
+                        "opacity": 1.0,
+                        "facecolor": "#1d7eea",
+                        "edgecolor": "#00478f",
+                        "linewidth": 0.5,
+                        "zorder": 20
+                    }
+                }
+            }
+        },
+        "signals": {
+            "signal_radius": 0.5,
+            "indicator": {
+                "shape": {
+                    "circle": {
+                        "facecolor": "#ebc200",
+                        "edgecolor": "#ebc200",
+                        "zorder": 20.2,
+                        "linewidth": 0.0
+                    }
+                }
+            },
+            "braking": {
+                "shape": {
+                    "circle": {
+                        "facecolor": "red",
+                        "edgecolor": "red",
+                        "zorder": 20.2,
+                        "linewidth": 0.0
+                    }
+                }
+            },
+            "horn": {
+                "shape": {
+                    "circle": {
+                        "facecolor": "red",
+                        "edgecolor": "red",
+                        "zorder": 20.1,
+                        "linewidth": 0.0
+                    }
+                }
+            },
+            "bluelight": {
+                "shape": {
+                    "circle": {
+                        "facecolor": "blue",
+                        "edgecolor": "blue",
+                        "zorder": 20.1,
+                        "linewidth": 0.0
+                    }
+                }
+            }
+        },
+        "draw_initial_state": false,
+        "state": {
+            "scale_factor": 0.3,
+            "kwargs": {
+                "linewidth": 1.5,
+                "edgecolor": "black",
+                "facecolor": "black"
+            }
+        },
+        "history": {
+            "draw_history": false,
+            "steps": 5,
+            "step_size": 1,
+            "fade_factor": 0.1,
+            "basecolor": "#ffe119",
+            "occupancy": {
+                "shape": {
+                    "polygon": {
+                        "opacity": 0.2,
+                        "edgecolor": "#000000",
+                        "linewidth": 0.0,
+                        "zorder": 17
+                    },
+                    "rectangle": {
+                        "opacity": 0.2,
+                        "edgecolor": "#000000",
+                        "linewidth": 0.0,
+                        "zorder": 17
+                    },
+                    "circle": {
+                        "opacity": 0.2,
+                        "edgecolor": "#000000",
+                        "linewidth": 0.0,
+                        "zorder": 17
+                    }
+                }
+            }
+        }
+    },
+    "static_obstacle": {
+        "occupancy": {
+            "shape": {
+                "polygon": {
+                    "opacity": 1.0,
+                    "facecolor": "#d95558",
+                    "edgecolor": "#831d20",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                },
+                "rectangle": {
+                    "opacity": 1.0,
+                    "facecolor": "#d95558",
+                    "edgecolor": "#831d20",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                },
+                "circle": {
+                    "opacity": 1.0,
+                    "facecolor": "#d95558",
+                    "edgecolor": "#831d20",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                }
+            }
+        }
+    },
+    "phantom_obstacle": {
+        "draw_shape": true,
+        "vehicle_shape": {
+            "occupancy": {
+                "shape": {
+                    "polygon": {
+                        "opacity": 1.0,
+                        "facecolor": "#c641f6",
+                        "edgecolor": "#00478f",
+                        "linewidth": 0.5,
+                        "zorder": 20
+                    },
+                    "rectangle": {
+                        "opacity": 1.0,
+                        "facecolor": "#c641f6",
+                        "edgecolor": "#00478f",
+                        "linewidth": 0.5,
+                        "zorder": 20
+                    },
+                    "circle": {
+                        "opacity": 1.0,
+                        "facecolor": "#c641f6",
+                        "edgecolor": "#00478f",
+                        "linewidth": 0.5,
+                        "zorder": 20
+                    }
+                }
+            }
+        },
+        "occupancy": {
+            "draw_occupancies": 1,
+            "shape": {
+                "polygon": {
+                    "opacity": 1.0,
+                    "facecolor": "#e59dff",
+                    "edgecolor": "#00478f",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                },
+                "rectangle": {
+                    "opacity": 1.0,
+                    "facecolor": "#e59dff",
+                    "edgecolor": "#00478f",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                },
+                "circle": {
+                    "opacity": 1.0,
+                    "facecolor": "#e59dff",
+                    "edgecolor": "#00478f",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                }
+            }
+        }
+    },
+    "environment_obstacle": {
+        "occupancy": {
+            "shape": {
+                "polygon": {
+                    "opacity": 1.0,
+                    "facecolor": "#0e6000",
+                    "edgecolor": "#831d20",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                },
+                "rectangle": {
+                    "opacity": 1.0,
+                    "facecolor": "#0e6000",
+                    "edgecolor": "#831d20",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                },
+                "circle": {
+                    "opacity": 1.0,
+                    "facecolor": "#0e6000",
+                    "edgecolor": "#831d20",
+                    "linewidth": 0.5,
+                    "zorder": 20
+                }
+            }
+        }
+    },
+    "trajectory": {
+        "draw_trajectory": true,
+        "facecolor": "#000000",
+        "draw_continuous": false,
+        "unique_colors": false,
+        "line_width": 0.17,
+        "z_order": 24,
+        "shape": {
+            "polygon": {
+                "opacity": 1.0,
+                "facecolor": "#000000",
+                "edgecolor": "#ff0000",
+                "linewidth": 0.5,
+                "zorder": 24
+            },
+            "rectangle": {
+                "opacity": 1.0,
+                "facecolor": "#000000",
+                "edgecolor": "#ff0000",
+                "linewidth": 0.5,
+                "zorder": 24
+            },
+            "circle": {
+                "opacity": 1.0,
+                "facecolor": "#000000",
+                "edgecolor": "#ff0000",
+                "linewidth": 0.5,
+                "zorder": 24
+            }
+        }
+    },
+    "lanelet_network": {
+        "kwargs_traffic_light_signs": {},
+        "draw_ids": "all"
+    },
+    "traffic_light": {
+        "draw_traffic_lights": true,
+        "red_color": "red",
+        "yellow_color": "#feb609",
+        "green_color": "#00aa16",
+        "red_yellow_color": "#fe4009ff",
+        "show_label": false,
+        "scale_factor": 1.0,
+        "zorder": 30
+    },
+    "traffic_sign": {
+        "draw_traffic_signs": false,
+        "show_traffic_signs": "all",
+        "speed_limit_unit": "auto",
+        "show_label": false,
+        "scale_factor": 1.0,
+        "zorder": 30
+    },
+    "intersection": {
+        "draw_intersections": false,
+        "draw_incoming_lanelets": true,
+        "incoming_lanelets_color": "#3ecbcf",
+        "draw_crossings": true,
+        "crossings_color": "#b62a55",
+        "draw_successors": true,
+        "successors_left_color": "#ff00ff",
+        "successors_straight_color": "blue",
+        "successors_right_color": "#ccff00",
+        "show_label": false
+    },
+    "lanelet": {
+        "left_bound_color": "#555555",
+        "right_bound_color": "#555555",
+        "center_bound_color": "#dddddd",
+        "unique_colors": false,
+        "draw_stop_line": true,
+        "stop_line_color": "#ffffff",
+        "draw_line_markings": true,
+        "draw_left_bound": true,
+        "draw_right_bound": true,
+        "draw_center_bound": true,
+        "draw_border_vertices": false,
+        "draw_start_and_direction": true,
+        "colormap_tangent": false,
+        "show_label": false,
+        "draw_linewidth": 0.5,
+        "fill_lanelet": true,
+        "facecolor": "#c7c7c7"
+    },
+    "occupancy": {
+        "draw_occupancies": false,
+        "shape": {
+            "polygon": {
+                "opacity": 0.2,
+                "facecolor": "#1d7eea",
+                "edgecolor": "#00478f",
+                "linewidth": 0.5,
+                "zorder": 18
+            },
+            "rectangle": {
+                "opacity": 0.2,
+                "facecolor": "#1d7eea",
+                "edgecolor": "#00478f",
+                "linewidth": 0.5,
+                "zorder": 18
+            },
+            "circle": {
+                "opacity": 0.2,
+                "facecolor": "#1d7eea",
+                "edgecolor": "#00478f",
+                "linewidth": 0.5,
+                "zorder": 18
+            }
+        },
+        "uncertain_position": {
+            "shape": {
+                "polygon": {
+                    "opacity": 0.6,
+                    "facecolor": "#000000",
+                    "edgecolor": "#ff0000",
+                    "linewidth": 0.5
+                },
+                "rectangle": {
+                    "opacity": 0.6,
+                    "facecolor": "#000000",
+                    "edgecolor": "#ff0000",
+                    "linewidth": 0.5
+                },
+                "circle": {
+                    "opacity": 0.6,
+                    "facecolor": "#000000",
+                    "edgecolor": "#ff0000",
+                    "linewidth": 0.5
+                }
+            }
+        }
+    },
+    "opacity": 1.0,
+    "facecolor": "#d95558",
+    "edgecolor": "#831d20",
+    "linewidth": 0.5,
+    "zorder": 20,
+    "state": {
+        "draw_arrow": false,
+        "radius": 0.5,
+        "scale_factor": 1.0,
+        "kwargs": {},
+        "facecolor": "#000080",
+        "zorder": 25
+    },
+    "planning_problem_set": {
+        "draw_ids": "all"
+    },
+    "planning_problem": {
+        "initial_state": {
+            "label_zorder": 35,
+            "label": "",
+            "state": {
+                "draw_arrow": true,
+                "radius": 1.0,
+                "scale_factor": 0.5,
+                "kwargs": {
+                    "color": "g",
+                    "width": 0.8
+                },
+                "facecolor": "g",
+                "zorder": 11
+            }
+        },
+        "goal_region": {
+            "draw_shape": true,
+            "shape": {
+                "polygon": {
+                    "opacity": 1.0,
+                    "linewidth": 0.5,
+                    "facecolor": "#f1b514",
+                    "edgecolor": "#302404",
+                    "zorder": 15
+                },
+                "rectangle": {
+                    "opacity": 1.0,
+                    "linewidth": 0.5,
+                    "facecolor": "#f1b514",
+                    "edgecolor": "#302404",
+                    "zorder": 15
+                },
+                "circle": {
+                    "opacity": 1.0,
+                    "linewidth": 0.5,
+                    "facecolor": "#f1b514",
+                    "edgecolor": "#302404",
+                    "zorder": 15
+                }
+            },
+            "lanelet": {
+                "left_bound_color": "#555555",
+                "right_bound_color": "#555555",
+                "center_bound_color": "#dddddd",
+                "draw_left_bound": true,
+                "draw_right_bound": true,
+                "draw_center_bound": true,
+                "draw_border_vertices": false,
+                "draw_start_and_direction": true,
+                "show_label": false,
+                "draw_linewidth": 0.5,
+                "fill_lanelet": true,
+                "facecolor": "#c7c7c7"
+            }
+        }
+    },
+    "antialiased": true
+}

@@ -1,0 +1,9 @@
+cr-monitor-v0:
+  policy_kwargs: dict(act_fun=tf.nn.tanh, net_arch=[dict(pi=[128,128,128,128])])
+  policy: 'MlpPolicy'
+  g_step: 5
+  d_step: 1
+  #hidden_size_adversary: 256
+  tb_log_name: '1_rob_128_128_128_128_g5'
+  mode: one_rob #mode='all_obs'-38, 'no_rob'-35,'one_rob'+rule='R_G3'
+  rule: R_G3
